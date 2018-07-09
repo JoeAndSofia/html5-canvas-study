@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<canvas id="mycanvas" width="200" height="300">
+	
+	您的浏览器不支持canvas
+
+</canvas>
+
+<input type="button" value="changeToDefault" onclick="changeToDefault()">
+
+<input type="button" value="checkSupportability" onclick="checkSupportability()">
+
+<script>
+	
+	var cc=document.getElementById("mycanvas");
+	
+	var cxt=cc.getContext("2d");
+
+	function changeToDefault(){
+		cc.removeAttribute("width")
+		cc.removeAttribute("height")
+		let cs = getComputedStyle(cc)
+		console.log(`width:${cs.width}`)
+		console.log(`height:${cs.height}`)
+	}
+	
+	function checkSupportability(){
+		if(cc.getContext){
+			let ccCtx = cc.getContext
+			console.log(ccCtx, typeof ccCtx)
+			let ctx = cc.getContext('2d')
+			console.log(ctx, typeof ctx)
+			console.log('support')
+		}else{
+			console.log('not support')
+		}
+	}
+	
+</script>
+</body>
+</html>
