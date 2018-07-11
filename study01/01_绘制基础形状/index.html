@@ -15,11 +15,24 @@
 
 <input type="button" value="checkSupportability" onclick="checkSupportability()">
 
+<input type="button" value="drawFillRect" onclick="drawFillRect()">
+
+<input type="button" value="drawStrokeRect" onclick="drawStrokeRect()">
+
+<input type="button" value="clearFillRect" onclick="clearFillRect()">
+
+<input type="button" value="clearStrokeRect" onclick="clearStrokeRect()">
+
+<br>
+
+<input type="button" value="drawPath" onclick="drawPath()">
+
+
 <script>
 	
 	var cc=document.getElementById("mycanvas");
 	
-	var cxt=cc.getContext("2d");
+	var ctx=cc.getContext("2d");
 
 	function changeToDefault(){
 		cc.removeAttribute("width")
@@ -40,7 +53,97 @@
 			console.log('not support')
 		}
 	}
+
+	function drawFillRect(){
+		ctx.fillRect(10,10,20,20)
+	}
+
+	function drawStrokeRect(){
+		ctx.strokeRect(40,10,20,20)
+	}
+
+	function clearFillRect(){
+		ctx.clearRect(10,10,20,20)
+	}
+
+	function clearStrokeRect(){
+		ctx.clearRect(39,9,22,22)
+	}
+
+	let step = 0
+	function drawPath(){
+		switch (step){
+			case 0:
+				cc.setAttribute("width", "400px");
+				cc.setAttribute("height", "400px");
+				ctx.beginPath();
+				console.log("ctx.beginPath();")
+				break;
+			case 1:
+				ctx.moveTo(150,150);
+				console.log("ctx.moveTo(150,150);")
+				break;
+			case 2:
+				ctx.lineTo(150,250);
+				console.log("ctx.lineTo(150,250);")
+				break;
+			case 3:
+				ctx.lineTo(300,250);
+				console.log("ctx.lineTo(300,250);")
+				break;
+			case 4:
+				ctx.stroke();
+				console.log("ctx.stroke();")
+				break;
+			case 5:
+				ctx.closePath();
+				console.log("ctx.closePath();")
+				break;
+			case 6:
+				ctx.fill(0,0,400,400);
+				console.log("ctx.clearRect(0,0,400,400);")
+				break;
+			case 7:
+				ctx.clearRect(0,0,400,400);
+				console.log("ctx.clearRect(0,0,400,400);")
+				break;
+
+		}
+		if(step < 6){
+			step++;
+		}else{
+			step = 0;
+		}
+	}
 	
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
