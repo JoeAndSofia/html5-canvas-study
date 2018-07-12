@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div style="display: flex;flex-direction: row">
+<span style="border: solid 1px gray">
+	<canvas id="mycanvas" width="600" height="600">
+		
+		您的浏览器不支持canvas
+	
+	</canvas>
+</span>
+	<span>
+	<br>
+	<input type="button" value="test001" onclick="test001()"><br>
+	<br>
+</span>
+</div>
+<script>
+	
+	var cc=document.getElementById("mycanvas");
+	
+	var ctx=cc.getContext("2d");
+	
+	function test001(){
+		ctx.beginPath();
+		ctx.moveTo(0,0);
+		ctx.lineTo(150,150);
+		ctx.lineTo(150,75);
+		ctx.closePath();
+		ctx.stroke();
+	}
+	
+	
+
+</script>
+</body>
+</html>
+
+
