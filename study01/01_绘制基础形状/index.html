@@ -74,8 +74,8 @@
 	function drawPath(){
 		switch (drawPathStep){
 			case 0:
-				cc.setAttribute("width", "600px");
-				cc.setAttribute("height", "600px");
+//				cc.setAttribute("width", "600px");
+//				cc.setAttribute("height", "600px");
 				ctx.beginPath();
 				console.log("ctx.beginPath();")
 				break;
@@ -116,12 +116,12 @@
 		}
 	}
 	
-	let clearPathStep = 0
+	let fillPathStep = 0
 	function fillPath(){
-		switch (clearPathStep){
+		switch (fillPathStep){
 			case 0:
-				cc.setAttribute("width", "600px");
-				cc.setAttribute("height", "600px");
+//				cc.setAttribute("width", "600px");
+//				cc.setAttribute("height", "600px");
 				ctx.beginPath();
 				console.log("ctx.beginPath();")
 				break;
@@ -151,10 +151,10 @@
 				break;
 			
 		}
-		if(clearPathStep < 6){
-			clearPathStep++;
+		if(fillPathStep < 6){
+			fillPathStep++;
 		}else{
-			clearPathStep = 0;
+			fillPathStep = 0;
 		}
 	}
 
