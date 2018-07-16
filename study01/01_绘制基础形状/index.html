@@ -14,18 +14,24 @@
 	</canvas>
 </span>
 <span>
-	<br>
+	<h4>一、什么是canvas</h4>
+	<h4>二、使用 JavaScript 来绘制图像</h4>
 	<input type="button" value="changeToDefault" onclick="changeToDefault()"><br>
 	<input type="button" value="checkSupportability" onclick="checkSupportability()"><br>
-	<br>
+	<h4>三、绘制矩形</h4>
 	<input type="button" value="drawFillRect" onclick="drawFillRect()"><br>
 	<input type="button" value="drawStrokeRect" onclick="drawStrokeRect()"><br>
 	<input type="button" value="clearFillRect" onclick="clearFillRect()"><br>
 	<input type="button" value="clearStrokeRect" onclick="clearStrokeRect()"><br>
-	<br>
+	<h4>四、绘制路径</h4>
 	<input type="button" value="drawPath" onclick="drawPath()"><br>
 	<input type="button" value="fillPath" onclick="fillPath()"><br>
-	<br>
+	<h4>五、弧线</h4>
+	<input type="button" value="drawArc" onclick="drawArc()"><br>
+	<input type="button" value="fillArc" onclick="fillArc()"><br>
+	<h4>六、贝塞尔（bezier）以及二次贝塞尔</h4>
+	<input type="button" value="drawArc" onclick="drawArc()"><br>
+	<input type="button" value="fillArc" onclick="fillArc()"><br>
 </span>
 </div>
 <script>
@@ -155,6 +161,84 @@
 			fillPathStep++;
 		}else{
 			fillPathStep = 0;
+		}
+	}
+	
+	let drawArcStep = 0
+	function drawArc(){
+		switch (drawArcStep){
+			case 0:
+				ctx.beginPath();
+				console.log("ctx.beginPath();")
+				break;
+			case 1:
+				ctx.arc(70,70,50,0,Math.PI/2,true);
+				console.log("ctx.arc(70,70,50,0,Math.PI/2,true);")
+				break;
+			case 2:
+				ctx.stroke();
+				console.log("ctx.stroke();")
+				break;
+			case 3:
+				ctx.beginPath();
+				console.log("ctx.beginPath();")
+				break;
+			case 4:
+				ctx.arc(180,70,50,0,Math.PI/2,false);
+				console.log("ctx.arc(180,70,50,0,Math.PI/2,false);")
+				break;
+			case 5:
+				ctx.stroke();
+				console.log("ctx.stroke();")
+				break;
+			case 6:
+				ctx.clearRect(0,0,600,600);
+				console.log("ctx.clearRect(0,0,600,600);")
+				break;
+		}
+		if(drawArcStep < 6){
+			drawArcStep++;
+		}else{
+			drawArcStep = 0;
+		}
+	}
+	
+	let fillArcStep = 0
+	function fillArc(){
+		switch (fillArcStep){
+			case 0:
+				ctx.beginPath();
+				console.log("ctx.beginPath();")
+				break;
+			case 1:
+				ctx.arc(300,70,50,0,Math.PI/2,true);
+				console.log("ctx.arc(70,70,50,0,Math.PI/2,true);")
+				break;
+			case 2:
+				ctx.fill();
+				console.log("ctx.fill();")
+				break;
+			case 3:
+				ctx.beginPath();
+				console.log("ctx.beginPath();")
+				break;
+			case 4:
+				ctx.arc(400,70,50,0,Math.PI/2,false);
+				console.log("ctx.arc(180,70,50,0,Math.PI/2,false);")
+				break;
+			case 5:
+				ctx.fill();
+				console.log("ctx.fill();")
+				break;
+			case 6:
+				ctx.clearRect(0,0,600,600);
+				console.log("ctx.clearRect(0,0,600,600);")
+				break;
+		}
+		if(fillArcStep < 6){
+			fillArcStep++;
+		}else{
+			fillArcStep = 0;
 		}
 	}
 
