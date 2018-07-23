@@ -3,36 +3,87 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
+	
+	<style>
+		.main{
+			display: flex;
+			flex-direction: row;
+			height: 600px;
+		}
+		
+		.main .canvas{
+			border: solid 1px gray;
+		}
+		
+		.main .canvas #mycanvas{
+			display: block;
+			position: relative;
+		}
+		
+		.main .control{
+			/*height: 600px;*/
+			/*width: 50%;*/
+			display: flex;
+			/*flex-direction: column;*/
+			flex-flow: column wrap;
+			/*align-items: stretch;*/
+		}
+		
+		.control input[type="button"]{
+			margin-left: 20px;
+			/*height: 20px;*/
+			/*flex: 1;*/
+			/*display: block;*/
+		}
+	
+	</style>
 </head>
 <body>
-<div style="display: flex;flex-direction: row">
-<span style="border: solid 1px gray">
-	<canvas id="mycanvas" width="600" height="600">
+<div class="main">
+	<div  class="canvas">
+		<canvas id="mycanvas" width="600" height="600">
+			
+			您的浏览器不支持canvas
 		
-		您的浏览器不支持canvas
-	
-	</canvas>
-</span>
-<span>
-	<h4>一、什么是canvas</h4>
-	<h4>二、使用 JavaScript 来绘制图像</h4>
-	<input type="button" value="changeToDefault" onclick="changeToDefault()"><br>
-	<input type="button" value="checkSupportability" onclick="checkSupportability()"><br>
-	<h4>三、绘制矩形</h4>
-	<input type="button" value="drawFillRect" onclick="drawFillRect()"><br>
-	<input type="button" value="drawStrokeRect" onclick="drawStrokeRect()"><br>
-	<input type="button" value="clearFillRect" onclick="clearFillRect()"><br>
-	<input type="button" value="clearStrokeRect" onclick="clearStrokeRect()"><br>
-	<h4>四、绘制路径</h4>
-	<input type="button" value="drawPath" onclick="drawPath()"><br>
-	<input type="button" value="fillPath" onclick="fillPath()"><br>
-	<h4>五、弧线</h4>
-	<input type="button" value="drawArc" onclick="drawArc()"><br>
-	<input type="button" value="fillArc" onclick="fillArc()"><br>
-	<h4>六、贝塞尔（bezier）以及二次贝塞尔</h4>
-	<input type="button" value="drawArc" onclick="drawArc()"><br>
-	<input type="button" value="fillArc" onclick="fillArc()"><br>
-</span>
+		</canvas>
+	</div>
+	<div class="control">
+		<div>
+			<h4>一、什么是canvas</h4>
+		</div>
+		<div>
+			<h4>二、使用 JavaScript 来绘制图像</h4>
+			<input type="button" value="changeToDefault" onclick="changeToDefault()"><br>
+			<input type="button" value="checkSupportability" onclick="checkSupportability()"><br>
+		</div>
+		<div>
+			<h4>三、绘制矩形</h4>
+			<input type="button" value="drawFillRect" onclick="drawFillRect()"><br>
+			<input type="button" value="drawStrokeRect" onclick="drawStrokeRect()"><br>
+			<input type="button" value="clearFillRect" onclick="clearFillRect()"><br>
+			<input type="button" value="clearStrokeRect" onclick="clearStrokeRect()"><br>
+		</div>
+		<div>
+			<h4>四、绘制路径</h4>
+			<input type="button" value="drawPath" onclick="drawPath()"><br>
+			<input type="button" value="fillPath" onclick="fillPath()"><br>
+		</div>
+		<div>
+			<h4>五、弧线</h4>
+			<input type="button" value="drawArc" onclick="drawArc()"><br>
+			<input type="button" value="fillArc" onclick="fillArc()"><br>
+		</div>
+		<div>
+			<h4>六、贝塞尔（bezier）以及二次贝塞尔</h4>
+			<input type="button" value="drawQuadraticCurve" onclick="drawQuadraticCurve()"><br>
+			<input type="button" value="drawBezierCurve" onclick="drawBezierCurve()"><br>
+		</div>
+		<div>
+			<h4>七、矩形</h4>
+			<input type="button" value="drawRectThenStroke" onclick="drawRectThenStroke()"><br>
+			<input type="button" value="drawRectThenFill" onclick="drawRectThenFill()"><br>
+		</div>
+	</div>
 </div>
 <script>
 	
@@ -61,7 +112,8 @@
 	}
 	
 	function drawFillRect(){
-		ctx.fillRect(10,10,20,20)
+		console.log("ctx.fillRect(10,10,20,20);");
+		ctx.fillRect(10,10,20,20);
 	}
 	
 	function drawStrokeRect(){
@@ -240,6 +292,30 @@
 		}else{
 			fillArcStep = 0;
 		}
+	}
+	
+	function drawQuadraticCurve(){
+		console.log("quadraticCurveTo(cp1x, cp1y, x, y);");
+		ctx.quadraticCurveTo(cp1x, cp1y, x, y);
+	}
+	
+	function drawBezierCurve(){
+		console.log("bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)");
+		bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+	}
+	
+	function drawRectThenStroke(){
+		console.log(`rect(100, 100, 200, 250);
+ctx.stroke();`);
+		ctx.rect(100, 100, 200, 250);
+		ctx.stroke();
+	}
+	
+	function drawRectThenFill(){
+		console.log(`ctx.rect(302, 100, 200, 250);
+ctx.fill();`);
+		ctx.rect(302, 100, 200, 250);
+		ctx.fill();
 	}
 
 </script>
